@@ -3,222 +3,185 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Heavenly Bites Bakery</title>
-
+<title>Royal Crumbs Bakery</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:#fffaf5;color:#333}
+
+header{
+display:flex;justify-content:space-between;align-items:center;
+padding:20px 40px;background:#ff7e5f;color:white
 }
 
-body {
-    background: #fffaf5;
-    color: #333;
+.hero{
+text-align:center;padding:80px 20px;
+background:linear-gradient(45deg,#ff7e5f,#feb47b);
+color:white
 }
 
-/* Header */
-header {
-    background: linear-gradient(135deg, #ff7e5f, #feb47b);
-    padding: 20px 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+.section{padding:60px 40px;text-align:center}
+
+.menu-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;margin-top:40px
 }
 
-header h1 {
-    font-size: 24px;
+.card{
+background:white;padding:25px;border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1)
 }
 
-nav a {
-    margin-left: 20px;
-    text-decoration: none;
-    color: white;
-    font-weight: 500;
-    transition: 0.3s;
+.btn{
+margin-top:10px;padding:10px 20px;border:none;
+border-radius:20px;background:#ff7e5f;color:white;
+cursor:pointer
 }
 
-nav a:hover {
-    opacity: 0.7;
+.cart{
+position:fixed;right:0;top:0;width:350px;height:100%;
+background:white;box-shadow:-5px 0 20px rgba(0,0,0,0.2);
+padding:20px;overflow:auto
 }
 
-/* Hero Section */
-.hero {
-    height: 90vh;
-    background: url('https://images.unsplash.com/photo-1509440159596-0249088772ff') no-repeat center/cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
-    padding: 20px;
+.cart h2{text-align:center;margin-bottom:15px}
+.cart-item{
+display:flex;justify-content:space-between;
+margin-bottom:10px;font-size:14px
 }
 
-.hero-content {
-    animation: fadeInUp 1.5s ease forwards;
+.remove{color:red;cursor:pointer}
+
+.total{margin-top:15px;font-weight:bold}
+
+input,textarea{
+width:100%;padding:8px;margin-top:8px;
+border-radius:5px;border:1px solid #ccc
 }
 
-.hero h2 {
-    font-size: 48px;
-    margin-bottom: 20px;
+.order-btn{
+margin-top:15px;width:100%;
+padding:12px;background:#28a745;
+color:white;border:none;cursor:pointer
 }
 
-.hero p {
-    font-size: 18px;
-    margin-bottom: 30px;
+footer{
+padding:20px;text-align:center;
+background:#ff7e5f;color:white;margin-top:40px
 }
-
-.btn {
-    padding: 12px 30px;
-    border: none;
-    border-radius: 30px;
-    background: linear-gradient(45deg, #ff7e5f, #feb47b);
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn:hover {
-    transform: scale(1.1);
-}
-
-/* Menu Section */
-.section {
-    padding: 80px 50px;
-    text-align: center;
-}
-
-.menu-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-}
-
-.card {
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    transition: 0.4s;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-}
-
-.card h3 {
-    margin-bottom: 10px;
-}
-
-.price {
-    color: #ff7e5f;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-/* Footer */
-footer {
-    background: #ff7e5f;
-    color: white;
-    padding: 20px;
-    text-align: center;
-}
-
-/* Animations */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.fade-in {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: 1s ease;
-}
-
-.fade-in.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
 </style>
 </head>
 <body>
 
 <header>
-    <h1>Heavenly Bites</h1>
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#menu">Menu</a>
-        <a href="#contact">Contact</a>
-    </nav>
+<h2>Royal Crumbs Bakery</h2>
 </header>
 
-<section class="hero" id="home">
-    <div class="hero-content">
-        <h2>Freshly Baked Happiness</h2>
-        <p>Delicious cakes, pastries & breads made with love.</p>
-        <button class="btn">Order Now</button>
-    </div>
+<section class="hero">
+<h1>Order Fresh Bakery Items 🍰</h1>
+<p>Delicious treats delivered to your home</p>
 </section>
 
-<section class="section fade-in" id="menu">
-    <h2>Our Special Menu</h2>
-    <div class="menu-grid">
-        <div class="card">
-            <h3>Chocolate Lava Cake</h3>
-            <p>Rich & gooey delight</p>
-            <div class="price">$18</div>
-        </div>
-        <div class="card">
-            <h3>Strawberry Cupcakes</h3>
-            <p>Sweet & fluffy treat</p>
-            <div class="price">$6</div>
-        </div>
-        <div class="card">
-            <h3>Classic Croissant</h3>
-            <p>Buttery perfection</p>
-            <div class="price">$4</div>
-        </div>
-    </div>
+<section class="section">
+<h2>Our Menu</h2>
+<div class="menu-grid">
+<div class="card">
+<h3>Chocolate Cake</h3>
+<p>$15</p>
+<button class="btn" onclick="addToCart('Chocolate Cake',15)">Add to Cart</button>
+</div>
+
+<div class="card">
+<h3>Strawberry Cupcake</h3>
+<p>$6</p>
+<button class="btn" onclick="addToCart('Strawberry Cupcake',6)">Add to Cart</button>
+</div>
+
+<div class="card">
+<h3>Butter Croissant</h3>
+<p>$4</p>
+<button class="btn" onclick="addToCart('Butter Croissant',4)">Add to Cart</button>
+</div>
+</div>
 </section>
 
-<section class="section fade-in" id="contact">
-    <h2>Contact Us</h2>
-    <p>Email: hello@heavenlybites.com</p>
-    <p>Phone: +123 456 7890</p>
-</section>
+<div class="cart">
+<h2>Your Cart 🛒</h2>
+<div id="cartItems"></div>
+<div class="total" id="total"></div>
+
+<h3 style="margin-top:20px;">Customer Details</h3>
+<input type="text" id="name" placeholder="Your Name">
+<input type="text" id="phone" placeholder="Phone Number">
+<textarea id="address" placeholder="Delivery Address"></textarea>
+
+<button class="order-btn" onclick="placeOrder()">Place Order</button>
+</div>
 
 <footer>
-    © 2026 Heavenly Bites Bakery | Made with ❤️
+© 2026 Royal Crumbs Bakery
 </footer>
 
 <script>
-const faders = document.querySelectorAll('.fade-in');
+let cart=[];
 
-window.addEventListener('scroll', () => {
-    faders.forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if(rect.top < window.innerHeight - 100){
-            el.classList.add('show');
-        }
-    });
+function addToCart(name,price){
+let item=cart.find(p=>p.name===name);
+if(item){
+item.quantity++;
+}else{
+cart.push({name,price,quantity:1});
+}
+updateCart();
+}
+
+function updateCart(){
+let cartDiv=document.getElementById("cartItems");
+let totalDiv=document.getElementById("total");
+cartDiv.innerHTML="";
+let total=0;
+
+cart.forEach((item,index)=>{
+total+=item.price*item.quantity;
+cartDiv.innerHTML+=`
+<div class="cart-item">
+${item.name} x${item.quantity} - $${item.price*item.quantity}
+<span class="remove" onclick="removeItem(${index})">✖</span>
+</div>`;
 });
+
+totalDiv.innerText="Total: $"+total;
+}
+
+function removeItem(index){
+cart.splice(index,1);
+updateCart();
+}
+
+function placeOrder(){
+let name=document.getElementById("name").value;
+let phone=document.getElementById("phone").value;
+let address=document.getElementById("address").value;
+
+if(cart.length===0){
+alert("Your cart is empty!");
+return;
+}
+if(name===""||phone===""||address===""){
+alert("Please fill all details!");
+return;
+}
+
+alert("Order Placed Successfully 🎉\n\nThank you "+name+"!\nYour order will be delivered soon.");
+
+cart=[];
+updateCart();
+document.getElementById("name").value="";
+document.getElementById("phone").value="";
+document.getElementById("address").value="";
+}
 </script>
 
 </body>
