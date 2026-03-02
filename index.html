@@ -7,182 +7,344 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-body{background:#fffaf5;color:#333}
-
-header{
-display:flex;justify-content:space-between;align-items:center;
-padding:20px 40px;background:#ff7e5f;color:white
+  .cart-panel{
+position:fixed;
+right:-400px;
+top:0;
+width:350px;
+height:100%;
+background:white;
+box-shadow:-5px 0 20px rgba(0,0,0,0.2);
+padding:20px;
+transition:0.4s;
+overflow-y:auto;
+z-index:2000;
 }
 
-.hero{
-text-align:center;padding:80px 20px;
-background:linear-gradient(45deg,#ff7e5f,#feb47b);
-color:white
+.cart-panel.active{
+right:0;
 }
 
-.section{padding:60px 40px;text-align:center}
-
-.menu-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;margin-top:40px
-}
-
-.card{
-background:white;padding:25px;border-radius:15px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1)
-}
-
-.btn{
-margin-top:10px;padding:10px 20px;border:none;
-border-radius:20px;background:#ff7e5f;color:white;
-cursor:pointer
-}
-
-.cart{
-position:fixed;right:0;top:0;width:350px;height:100%;
-background:white;box-shadow:-5px 0 20px rgba(0,0,0,0.2);
-padding:20px;overflow:auto
-}
-
-.cart h2{text-align:center;margin-bottom:15px}
 .cart-item{
-display:flex;justify-content:space-between;
-margin-bottom:10px;font-size:14px
+display:flex;
+justify-content:space-between;
+margin-bottom:10px;
+font-size:14px;
 }
 
-.remove{color:red;cursor:pointer}
+.remove{
+color:red;
+cursor:pointer;
+}
 
-.total{margin-top:15px;font-weight:bold}
+.cart-btn{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#ff7e5f;
+color:white;
+padding:15px;
+border-radius:50%;
+cursor:pointer;
+font-size:20px;
+z-index:1500;
+}
 
-input,textarea{
-width:100%;padding:8px;margin-top:8px;
-border-radius:5px;border:1px solid #ccc
+input, textarea{
+width:100%;
+padding:8px;
+margin-top:8px;
+border-radius:5px;
+border:1px solid #ccc;
 }
 
 .order-btn{
-margin-top:15px;width:100%;
-padding:12px;background:#28a745;
-color:white;border:none;cursor:pointer
+margin-top:15px;
+width:100%;
+padding:12px;
+background:#28a745;
+color:white;
+border:none;
+cursor:pointer;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:#fffaf5;color:#333;transition:0.4s}
+body.dark{background:#1e1e1e;color:#fff}
+
+header{
+display:flex;justify-content:space-between;align-items:center;
+padding:20px 40px;
+background:linear-gradient(45deg,#ff7e5f,#feb47b);
+color:white;position:sticky;top:0;z-index:1000
+}
+
+nav a{color:white;margin-left:20px;text-decoration:none}
+.toggle{cursor:pointer;background:white;color:#ff7e5f;padding:5px 15px;border-radius:20px}
+
+.hero{
+height:90vh;display:flex;justify-content:center;align-items:center;
+position:relative;overflow:hidden
+}
+
+.slider{
+position:absolute;width:100%;height:100%;z-index:-1
+}
+
+.slide{
+position:absolute;width:100%;height:100%;
+background-size:cover;background-position:center;
+opacity:0;transition:1s
+}
+.slide.active{opacity:1}
+
+.hero-content{text-align:center;color:white}
+.hero h1{font-size:50px}
+.btn{
+margin-top:20px;padding:12px 30px;border:none;
+border-radius:30px;background:#ff7e5f;color:white;
+cursor:pointer;transition:0.3s
+}
+.btn:hover{transform:scale(1.1)}
+
+.section{padding:80px 40px;text-align:center}
+<div class="menu-grid">
+    <div class="card">
+        <h3>Chocolate Lava Cake</h3>
+        <p>Rich & gooey delight</p>
+        <div class="price">$18</div>
+        <button class="btn" onclick="addToCart('Chocolate Lava Cake',18)">Add to Cart</button>
+    </div>
+
+    <div class="card">
+        <h3>Strawberry Cupcakes</h3>
+        <p>Sweet & fluffy treat</p>
+        <div class="price">$6</div>
+        <button class="btn" onclick="addToCart('Strawberry Cupcakes',6)">Add to Cart</button>
+    </div>
+
+    <div class="card">
+        <h3>Classic Croissant</h3>
+        <p>Buttery perfection</p>
+        <div class="price">$4</div>
+        <button class="btn" onclick="addToCart('Classic Croissant',4)">Add to Cart</button>
+    </div>
+</div>
+.cart{
+position:fixed;right:-400px;top:0;width:350px;height:100%;
+background:white;box-shadow:-5px 0 20px rgba(0,0,0,0.2);
+padding:20px;transition:0.4s;overflow:auto;z-index:2000
+}
+body.dark .cart{background:#2b2b2b}
+.cart.active{right:0}
+.cart h2{text-align:center;margin-bottom:20px}
+.cart-item{margin-bottom:10px}
+.total{font-weight:bold;margin-top:20px}
+.checkout{
+margin-top:20px;width:100%;
+padding:10px;background:#ff7e5f;color:white;border:none;cursor:pointer
+}
+
+.cart-btn{
+position:fixed;bottom:20px;right:20px;
+background:#ff7e5f;color:white;padding:15px;
+border-radius:50%;cursor:pointer;font-size:20px;
+z-index:1500
+}
+
+.modal{
+position:fixed;top:0;left:0;width:100%;height:100%;
+background:rgba(0,0,0,0.6);
+display:flex;justify-content:center;align-items:center;
+opacity:0;pointer-events:none;transition:0.3s
+}
+.modal.active{opacity:1;pointer-events:auto}
+.modal-content{
+background:white;padding:30px;border-radius:10px;text-align:center
+}
+
+.floating{
+position:absolute;font-size:40px;animation:float 6s infinite ease-in-out
+}
+.f1{top:20%;left:10%}
+.f2{top:70%;left:80%;animation-delay:2s}
+.f3{top:50%;left:50%;animation-delay:4s}
+
+@keyframes float{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-30px)}
 }
 
 footer{
 padding:20px;text-align:center;
-background:#ff7e5f;color:white;margin-top:40px
+background:#ff7e5f;color:white
 }
 </style>
 </head>
 <body>
 
 <header>
-<h2>Royal Crumbs Bakery</h2>
+<h2>Royal Crumbs</h2>
+<nav>
+<a href="#menu">Menu</a>
+<a href="#contact">Contact</a>
+<span class="toggle" onclick="toggleDark()">🌙</span>
+</nav>
 </header>
 
 <section class="hero">
-<h1>Order Fresh Bakery Items 🍰</h1>
-<p>Delicious treats delivered to your home</p>
+<div class="slider">
+<div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1509440159596-0249088772ff')"></div>
+<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1499636136210-6f4ee915583e')"></div>
+<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1519864600265-abb23847ef2c')"></div>
+</div>
+
+<div class="floating f1">🧁</div>
+<div class="floating f2">🍰</div>
+<div class="floating f3">🥐</div>
+
+<div class="hero-content">
+<h1>Freshly Baked Happiness</h1>
+<button class="btn" onclick="toggleCart()">Order Now</button>
+</div>
 </section>
 
-<section class="section">
-<h2>Our Menu</h2>
+<section class="section" id="menu">
+<h2>Our Special Menu</h2>
 <div class="menu-grid">
 <div class="card">
 <h3>Chocolate Cake</h3>
-<p>$15</p>
+<div class="price">$15</div>
 <button class="btn" onclick="addToCart('Chocolate Cake',15)">Add to Cart</button>
 </div>
-
 <div class="card">
 <h3>Strawberry Cupcake</h3>
-<p>$6</p>
+<div class="price">$6</div>
 <button class="btn" onclick="addToCart('Strawberry Cupcake',6)">Add to Cart</button>
 </div>
-
 <div class="card">
 <h3>Butter Croissant</h3>
-<p>$4</p>
+<div class="price">$4</div>
 <button class="btn" onclick="addToCart('Butter Croissant',4)">Add to Cart</button>
 </div>
 </div>
 </section>
 
-<div class="cart">
-<h2>Your Cart 🛒</h2>
+<section class="section" id="contact">
+<h2>Contact Us</h2>
+<p>Email: hello@royalcrumbs.com</p>
+<p>Phone: +123 456 7890</p>
+</section>
+
+<div class="cart" id="cart">
+<h2>Your Cart</h2>
 <div id="cartItems"></div>
 <div class="total" id="total"></div>
+<button class="checkout" onclick="checkout()">Proceed to Payment</button>
+</div>
 
-<h3 style="margin-top:20px;">Customer Details</h3>
-<input type="text" id="name" placeholder="Your Name">
-<input type="text" id="phone" placeholder="Phone Number">
-<textarea id="address" placeholder="Delivery Address"></textarea>
+<div class="cart-btn" onclick="toggleCart()">🛒</div>
 
-<button class="order-btn" onclick="placeOrder()">Place Order</button>
+<div class="modal" id="modal">
+<div class="modal-content">
+<h2>Payment Successful 🎉</h2>
+<p>Thank you for your order!</p>
+<button class="btn" onclick="closeModal()">Close</button>
+</div>
 </div>
 
 <footer>
-© 2026 Royal Crumbs Bakery
+© 2026 Royal Crumbs Bakery | Premium Experience
 </footer>
 
 <script>
-let cart=[];
+const faders = document.querySelectorAll('.fade-in');
 
-function addToCart(name,price){
-let item=cart.find(p=>p.name===name);
-if(item){
-item.quantity++;
-}else{
-cart.push({name,price,quantity:1});
+window.addEventListener('scroll', () => {
+    faders.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if(rect.top < window.innerHeight - 100){
+            el.classList.add('show');
+        }
+    });
+});
+
+let cart = [];
+
+function toggleCart(){
+    document.getElementById("cartPanel").classList.toggle("active");
 }
-updateCart();
+
+function addToCart(name, price){
+    let item = cart.find(p => p.name === name);
+    if(item){
+        item.quantity++;
+    } else {
+        cart.push({name, price, quantity:1});
+    }
+    updateCart();
+    toggleCart();
 }
 
 function updateCart(){
-let cartDiv=document.getElementById("cartItems");
-let totalDiv=document.getElementById("total");
-cartDiv.innerHTML="";
-let total=0;
+    let cartDiv = document.getElementById("cartItems");
+    let totalDiv = document.getElementById("total");
+    cartDiv.innerHTML = "";
+    let total = 0;
 
-cart.forEach((item,index)=>{
-total+=item.price*item.quantity;
-cartDiv.innerHTML+=`
-<div class="cart-item">
-${item.name} x${item.quantity} - $${item.price*item.quantity}
-<span class="remove" onclick="removeItem(${index})">✖</span>
-</div>`;
-});
+    cart.forEach((item,index)=>{
+        total += item.price * item.quantity;
+        cartDiv.innerHTML += `
+        <div class="cart-item">
+            ${item.name} x${item.quantity} - $${item.price*item.quantity}
+            <span class="remove" onclick="removeItem(${index})">✖</span>
+        </div>`;
+    });
 
-totalDiv.innerText="Total: $"+total;
+    totalDiv.innerText = "Total: $" + total;
 }
 
 function removeItem(index){
-cart.splice(index,1);
-updateCart();
+    cart.splice(index,1);
+    updateCart();
 }
 
 function placeOrder(){
-let name=document.getElementById("name").value;
-let phone=document.getElementById("phone").value;
-let address=document.getElementById("address").value;
+    let name = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
+    let address = document.getElementById("address").value;
 
-if(cart.length===0){
-alert("Your cart is empty!");
-return;
-}
-if(name===""||phone===""||address===""){
-alert("Please fill all details!");
-return;
-}
+    if(cart.length === 0){
+        alert("Your cart is empty!");
+        return;
+    }
 
-alert("Order Placed Successfully 🎉\n\nThank you "+name+"!\nYour order will be delivered soon.");
+    if(name === "" || phone === "" || address === ""){
+        alert("Please fill all details!");
+        return;
+    }
 
-cart=[];
-updateCart();
-document.getElementById("name").value="";
-document.getElementById("phone").value="";
-document.getElementById("address").value="";
+    alert("Order Placed Successfully 🎉\n\nThank you " + name + "!\nWe will contact you at " + phone);
+
+    cart = [];
+    updateCart();
+    document.getElementById("name").value="";
+    document.getElementById("phone").value="";
+    document.getElementById("address").value="";
 }
 </script>
+<div class="cart-btn" onclick="toggleCart()">🛒</div>
 
+<div class="cart-panel" id="cartPanel">
+    <h2>Your Cart</h2>
+    <div id="cartItems"></div>
+    <h3 id="total"></h3>
+
+    <h3 style="margin-top:20px;">Customer Details</h3>
+    <input type="text" id="name" placeholder="Your Name">
+    <input type="text" id="phone" placeholder="Phone Number">
+    <textarea id="address" placeholder="Delivery Address"></textarea>
+
+    <button class="order-btn" onclick="placeOrder()">Place Order</button>
+</div>
 </body>
 </html>
