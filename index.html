@@ -1,240 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Boys Shopping Centre | Electric Store Nepal</title>
+    <meta charset="UTF-8">
+    <title>Sweet Cravings Bakery</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff8f2;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+        header {
+            background-color: #d2691e;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:#0f172a;color:white;overflow-x:hidden;}
-.container{width:90%;max-width:1200px;margin:auto;}
-section{padding:100px 0;}
+        nav {
+            background-color: #f4a460;
+            padding: 10px;
+            text-align: center;
+        }
 
-header{position:fixed;width:100%;background:rgba(2,6,23,0.9);padding:20px 0;z-index:1000;}
-nav{display:flex;justify-content:space-between;align-items:center;}
-.logo{color:#38bdf8;font-weight:700;font-size:22px;}
-.menu{display:flex;list-style:none;gap:25px;}
-.menu li a{text-decoration:none;color:white;font-weight:500;}
-.menu li a:hover{color:#38bdf8;}
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 15px;
+            font-weight: bold;
+        }
 
-.cart-btn{cursor:pointer;background:#38bdf8;padding:8px 15px;border-radius:5px;color:black;font-weight:600;}
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+            background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
 
-.hero{height:100vh;display:flex;align-items:center;text-align:center;background:linear-gradient(rgba(15,23,42,0.85),rgba(15,23,42,0.85)),url('https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;}
-.hero h1{font-size:50px;color:#38bdf8;}
+        .section {
+            padding: 40px 20px;
+            text-align: center;
+        }
 
-.search-bar{text-align:center;margin-bottom:20px;}
-.search-bar input{width:300px;padding:10px;border:none;border-radius:5px;}
+        .menu-items {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
 
-.filters{text-align:center;margin-bottom:20px;}
-.filters button{margin:5px;padding:8px 15px;background:#1e293b;color:white;border:1px solid #38bdf8;border-radius:20px;cursor:pointer;}
-.filters button:hover{background:#38bdf8;color:black;}
+        .card {
+            background-color: white;
+            padding: 20px;
+            width: 200px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
 
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;}
-.product{background:#1e293b;padding:20px;border-radius:10px;text-align:center;}
-.product img{width:100%;height:200px;object-fit:cover;border-radius:10px;margin-bottom:15px;}
-.price{color:#38bdf8;font-weight:600;margin:10px 0;}
-.btn{padding:10px 20px;background:#38bdf8;border:none;color:#000;border-radius:5px;cursor:pointer;font-weight:600;}
-.btn:hover{background:white;}
+        footer {
+            background-color: #d2691e;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
 
-.cart{
-position:fixed;
-right:-400px;
-top:0;
-width:350px;
-height:100%;
-background:#020617;
-padding:20px;
-transition:0.4s;
-overflow-y:auto;
-z-index:2000;
-}
-.cart.active{right:0;}
+        button {
+            background-color: #ff7f50;
+            border: none;
+            padding: 10px 20px;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
 
-.cart-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:20px;
-}
-
-.close-cart{
-cursor:pointer;
-font-size:24px;
-color:#38bdf8;
-}
-
-.cart-item{
-margin-bottom:15px;
-border-bottom:1px solid #1e293b;
-padding-bottom:10px;
-}
-
-.qty-btn{
-margin:0 5px;
-cursor:pointer;
-background:#38bdf8;
-padding:2px 6px;
-border-radius:3px;
-color:black;
-}
-
-.total{font-weight:700;margin-top:20px;}
-footer{text-align:center;padding:20px;background:#020617;}
-</style>
+        button:hover {
+            background-color: #ff5722;
+        }
+    </style>
 </head>
-
 <body>
 
 <header>
-<div class="container">
-<nav>
-<div class="logo">The Boys Shopping Centre ⚡</div>
-
-<ul class="menu">
-<li><a href="#home">Home</a></li>
-<li><a href="#products">Products</a></li>
-</ul>
-
-<div class="cart-btn" onclick="toggleCart()">Cart (<span id="count">0</span>)</div>
-</nav>
-</div>
+    <h1>Sweet Cravings Bakery</h1>
+    <p>Freshly Baked Happiness Every Day 🍞</p>
 </header>
 
+<nav>
+    <a href="#home">Home</a>
+    <a href="#menu">Menu</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+</nav>
+
 <section class="hero" id="home">
-<div class="container">
-<h1>Power Your Digital World</h1>
-<p>Smartphones • TVs • Laptops • Gadgets • Accessories</p>
-</div>
+    <h2>Delicious Cakes & Pastries</h2>
+    <p>Made with love and the finest ingredients.</p>
+    <button>Order Now</button>
 </section>
 
-<section class="container" id="products">
-<div class="search-bar">
-<input type="text" id="search" placeholder="Search products..." onkeyup="searchProduct()">
-</div>
-
-<div class="filters">
-<button onclick="filterCategory('all')">All</button>
-<button onclick="filterCategory('phone')">Smartphones</button>
-<button onclick="filterCategory('tv')">TV</button>
-<button onclick="filterCategory('laptop')">Laptops</button>
-<button onclick="filterCategory('accessory')">Accessories</button>
-</div>
-
-<div class="grid" id="product-list"></div>
+<section class="section" id="menu">
+    <h2>Our Special Menu</h2>
+    <div class="menu-items">
+        <div class="card">
+            <h3>Chocolate Cake</h3>
+            <p>$15</p>
+        </div>
+        <div class="card">
+            <h3>Strawberry Cupcake</h3>
+            <p>$5</p>
+        </div>
+        <div class="card">
+            <h3>Fresh Bread</h3>
+            <p>$3</p>
+        </div>
+    </div>
 </section>
 
-<!-- CART -->
-<div class="cart" id="cart">
-<div class="cart-header">
-<h2>Your Cart</h2>
-<span class="close-cart" onclick="toggleCart()">✖</span>
-</div>
+<section class="section" id="about">
+    <h2>About Us</h2>
+    <p>We are a family-owned bakery serving fresh and delicious baked goods since 2020.</p>
+</section>
 
-<div id="cart-items"></div>
-<div class="total">Total: Rs. <span id="total">0</span></div>
-<br>
-<button class="btn" onclick="orderWhatsApp()">Order via WhatsApp</button>
-</div>
+<section class="section" id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: info@sweetcravings.com</p>
+    <p>Phone: +123 456 7890</p>
+</section>
 
 <footer>
-© 2026 The Boys Shopping Centre | Nepal Electric Store
+    <p>© 2026 Sweet Cravings Bakery | All Rights Reserved</p>
 </footer>
-
-<script>
-let products=[
-{name:"Smartphone", price:80000, category:"phone", img:"https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&cs=tinysrgb&w=800"},
-{name:"Smart TV", price:150000, category:"tv", img:"https://images.pexels.com/photos/1649771/pexels-photo-1649771.jpeg?auto=compress&cs=tinysrgb&w=800"},
-{name:"Laptop", price:100000, category:"laptop", img:"https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=800"},
-{name:"Earbuds", price:4000, category:"accessory", img:"https://images.pexels.com/photos/3780681/pexels-photo-3780681.jpeg?auto=compress&cs=tinysrgb&w=800"},
-{name:"Power Bank", price:3500, category:"accessory", img:"https://images.pexels.com/photos/4526410/pexels-photo-4526410.jpeg?auto=compress&cs=tinysrgb&w=800"},
-{name:"Speaker", price:6000, category:"accessory", img:"https://images.pexels.com/photos/63703/pexels-photo-63703.jpeg?auto=compress&cs=tinysrgb&w=800"}
-];
-
-let cart=JSON.parse(localStorage.getItem("cart"))||[];
-
-function displayProducts(list){
-let html="";
-list.forEach((p,i)=>{
-html+=`
-<div class="product">
-<img src="${p.img}">
-<h3>${p.name}</h3>
-<div class="price">Rs.${p.price}</div>
-<button class="btn" onclick="addToCart(${i})">Add to Cart</button>
-</div>`;
-});
-document.getElementById("product-list").innerHTML=html;
-}
-displayProducts(products);
-
-function filterCategory(cat){
-if(cat==="all") displayProducts(products);
-else displayProducts(products.filter(p=>p.category===cat));
-}
-
-function searchProduct(){
-let val=document.getElementById("search").value.toLowerCase();
-displayProducts(products.filter(p=>p.name.toLowerCase().includes(val)));
-}
-
-function toggleCart(){
-document.getElementById("cart").classList.toggle("active");
-renderCart();
-}
-
-function addToCart(i){
-let existing = cart.find(item=>item.name===products[i].name);
-if(existing){
-existing.qty++;
-}else{
-cart.push({...products[i],qty:1});
-}
-renderCart();
-}
-
-function renderCart(){
-let items="";
-let total=0;
-
-cart.forEach((c,index)=>{
-total+=c.price*c.qty;
-
-items+=`
-<div class="cart-item">
-${c.name}
-<span class="qty-btn" onclick="changeQty(${index},-1)">-</span>
-${c.qty}
-<span class="qty-btn" onclick="changeQty(${index},1)">+</span>
-Rs.${c.price*c.qty}
-</div>`;
-});
-
-document.getElementById("cart-items").innerHTML=items;
-document.getElementById("total").innerText=total;
-document.getElementById("count").innerText=cart.length;
-
-localStorage.setItem("cart",JSON.stringify(cart));
-}
-
-function changeQty(i,val){
-cart[i].qty+=val;
-if(cart[i].qty<=0) cart.splice(i,1);
-renderCart();
-}
-
-function orderWhatsApp(){
-let msg="Order Details:%0A";
-cart.forEach(c=>{
-msg+=`${c.name} x${c.qty} - Rs.${c.price*c.qty}%0A`;
-});
-window.open(`https://wa.me/9779765501697?text=${msg}`);
-}
-
-renderCart();
-</script>
 
 </body>
 </html>
