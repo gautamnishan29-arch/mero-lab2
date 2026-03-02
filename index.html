@@ -334,6 +334,28 @@ function placeOrder(){
         return;
     }
 
+    let message = "🧁 *New Bakery Order* 🧁%0A%0A";
+
+    cart.forEach(item=>{
+        message += item.name + " x" + item.quantity + 
+        " - $" + (item.price * item.quantity) + "%0A";
+    });
+
+    let total = cart.reduce((sum,item)=> sum + item.price*item.quantity ,0);
+
+    message += "%0A*Total:* $" + total + "%0A%0A";
+    message += "*Customer Name:* " + name + "%0A";
+    message += "*Customer Phone:* " + phone + "%0A";
+    message += "*Delivery Address:* " + address;
+
+    let whatsappURL = "https://wa.me/9779867182902?text=" + message;
+
+    window.open(whatsappURL, "_blank");
+
+    cart = [];
+    updateCart();
+}
+
     alert("Order Placed Successfully 🎉\n\nThank you " + name + "!\nWe will contact you at " + phone);
 
     cart = [];
